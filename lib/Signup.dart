@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignupState extends State<Signup> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffA9BB86),
+      backgroundColor: const Color(0xff0C2F23),
       body: Stack(
         children: [
           Container(
@@ -41,6 +41,28 @@ class _SignupState extends State<Signup> {
               ),
             ),
           ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 190, left: 160),
+              child: Row(
+                children: [
+                  Text(
+                    'Silahkan Login',
+                    style: GoogleFonts.goldman(
+                      fontSize: 10,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 15),  // Adjust the spacing as needed
+                  Icon(
+                    Icons.info_outline,
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 200.0),
             child: Container(
@@ -51,32 +73,57 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const TextField(
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Colors.grey,
-                        ),
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(184, 0, 0, 0),
+                    Card(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            prefix: Text('     ',style: GoogleFonts.goldman()),  // Add some space before the label text
+                            suffixIcon: Icon(
+                              Icons.check,
+                              color: Colors.grey,
+                            ),
+                            labelText: '    Email',
+                            labelStyle:GoogleFonts.goldman().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(184, 0, 0, 0),)
+
                         ),
                       ),
                     ),
                     const SizedBox(
-                      height: 35,
+                      height: 15,
                     ),
-                    const TextField(
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.grey,
+                    Card(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefix: Text('     ',style: GoogleFonts.goldman()), // Add some space before the label text
+                          suffixIcon: Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: Colors.grey,
+                          ),
+                          labelText: '    Password',
+                          labelStyle: GoogleFonts.goldman().copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(184, 0, 0, 0),
+                          ),
                         ),
-                        labelText: 'Password',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(184, 0, 0, 0),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Card(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefix: Text('     ',style: GoogleFonts.goldman()), // Add some space before the label text
+                          suffixIcon: Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: Colors.grey,
+                          ),
+                          labelText: '    Confirm Password',
+                          labelStyle: GoogleFonts.goldman().copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(184, 0, 0, 0),
+                          ),
                         ),
                       ),
                     ),
@@ -103,43 +150,14 @@ class _SignupState extends State<Signup> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(45),
                         gradient: const LinearGradient(
-                            colors: [Color.fromARGB(184, 16, 12, 2), Color.fromARGB(184, 11, 9, 3)]),
+                            colors: [Color(0XFF838383), Color.fromARGB(184, 11, 9, 3)]),
                       ),
                       child: TextButton(
                         onPressed: () {},
                         child: const Text(
-                          'SIGN IN',
+                          'CONFIRM',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
                         ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have an account?",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Create New Account",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              color: Color(0xFF7B61FF),
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ],
