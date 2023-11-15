@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/Login.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _SignupState extends State<Signup> {
         children: [
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 90, left: 90),
+              padding: const EdgeInsets.only(top: 90, left: 87),
               child: Text(
                 'PARKOL',
                 style: GoogleFonts.goldman(
@@ -43,13 +44,13 @@ class _SignupState extends State<Signup> {
           ),
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 190, left: 160),
+              padding: const EdgeInsets.only(top: 190, left: 150),
               child: Row(
                 children: [
                   Text(
-                    'Silahkan Login',
+                    'Create Account',
                     style: GoogleFonts.goldman(
-                      fontSize: 10,
+                      fontSize: 15,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -100,7 +101,7 @@ class _SignupState extends State<Signup> {
                             Icons.remove_red_eye_outlined,
                             color: Colors.grey,
                           ),
-                          labelText: ' Password',
+                          labelText: '   Password',
                           labelStyle: GoogleFonts.goldman().copyWith(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(184, 0, 0, 0),
@@ -149,14 +150,15 @@ class _SignupState extends State<Signup> {
                       width: 300,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(45),
-                        gradient: const LinearGradient(
-                            colors: [Color(0XFF838383), Color.fromARGB(184, 11, 9, 3)]),
+                        color: Color(0XFF838383)
                       ),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                        },
                         child: const Text(
                           'CONFIRM',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+
                         ),
                       ),
                     ),
