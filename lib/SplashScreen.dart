@@ -26,24 +26,16 @@ class _SplashScreen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 31, 102, 34),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Welcome",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
-              ),
-            ),
-            SizedBox(height: 20.0), // Add spacing between text and image
+          children: <Widget>[ // Add spacing between text and image
             Image.asset(
               'assets/logo.png', // Replace 'your_image.png' with your actual image asset path
-              width: 100.0, // Adjust the width as needed
-              height: 100.0, // Adjust the height as needed
+              width: 300.0, // Adjust the width as needed
+              height: 300.0, // Adjust the height as needed
             ),
           ],
         ),
