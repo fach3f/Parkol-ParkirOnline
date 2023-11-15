@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parkol/Signup.dart';
+import 'package:parkol/home.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -134,7 +134,9 @@ class _LoginState extends State<Login> {
                         color: const Color.fromARGB(255, 110, 109, 109)
                       ),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                        },
                         child: const Text(
                           'SIGN IN',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
@@ -161,7 +163,7 @@ class _LoginState extends State<Login> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
                             },
                             child: Text(
                               "Create New Account",
