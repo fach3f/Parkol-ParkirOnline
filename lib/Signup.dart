@@ -16,8 +16,7 @@ class _SignupState extends State<Signup> {
       backgroundColor: const Color(0xff0C2F23),
       body: Stack(
         children: [
-          Container(
-            child: Padding(
+                Padding(
               padding: const EdgeInsets.only(top: 90, left: 87),
               child: Text(
                 'PARKOL',
@@ -27,10 +26,9 @@ class _SignupState extends State<Signup> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
+
           ),
-          Container(
-            child: Padding(
+     Padding(
               padding: const EdgeInsets.only(top: 160, left: 140),
               child: Text(
                 'Parkir Online',
@@ -41,9 +39,9 @@ class _SignupState extends State<Signup> {
                 ),
               ),
             ),
-          ),
-          Container(
-            child: Padding(
+
+
+             Padding(
               padding: const EdgeInsets.only(top: 190, left: 150),
               child: Row(
                 children: [
@@ -63,7 +61,6 @@ class _SignupState extends State<Signup> {
                 ],
               ),
             ),
-          ),
           Padding(
             padding: const EdgeInsets.only(top: 200.0),
             child: Container(
