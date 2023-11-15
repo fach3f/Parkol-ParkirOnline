@@ -71,25 +71,30 @@ class HomeContentPage extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Card(
-          color: Colors.white, // Warna latar belakang card
-          elevation: 7.0, // Ketinggian shadow card
-          child: Padding(
-            padding: const EdgeInsets.all(100.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min
-              ,
-              children: <Widget>[
-                Text(
-                  'Joker',
-                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 16.0),
-                Text(
-                  'Joker adalah sebuah karakter penjahat superrrr fiksiadasdas4ewqa...',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
+        child: Container(
+          width: 350.0, // Atur lebar card
+          height: 500.0, // Atur tinggi card
+          child: Card(
+            color: Colors.white, // Warna latar belakang card
+            elevation: 7.0, // Ketinggian shadow card
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    'Data Kendaraan',
+                    style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 16.0),
+                  Expanded(
+                    child: Text(
+                      'Jenis Kendaraan',
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
