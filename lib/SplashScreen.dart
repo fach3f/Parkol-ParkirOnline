@@ -49,7 +49,7 @@ class _SplashScreen extends State<SplashScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 300), // Increase the spacing between image and loading animation
+            SizedBox(height: 250), // Increase the spacing between image and loading animation
             if (isLoading)
               LoadingAnimationWidget.inkDrop(
                 color: Color(0xffA9BB86),
