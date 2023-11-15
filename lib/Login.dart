@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/Signup.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _LoginState extends State<Login> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 15),  // Adjust the spacing as needed
+                  SizedBox(width: 15),
                   Icon(
                     Icons.info_outline,
                     color: Colors.grey,
@@ -73,41 +74,41 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Card(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefix: Text('     ',style: GoogleFonts.goldman()),  // Add some space before the label text
-                        suffixIcon: Icon(
-                          Icons.check,
-                          color: Colors.grey,
-                        ),
-                        labelText: '    Email',
-                        labelStyle:GoogleFonts.goldman().copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(184, 0, 0, 0),)
-
+                    Card(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefix: Text('     ', style: GoogleFonts.goldman()),  // Add some space before the label text
+                          suffixIcon: Icon(
+                            Icons.check,
+                            color: Colors.grey,
+                          ),
+                          labelText: '    Email',
+                          labelStyle: GoogleFonts.goldman().copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(184, 0, 0, 0),
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 35,
                     ),
-                  Card(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefix: Text('     ',style: GoogleFonts.goldman()), // Add some space before the label text
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye_outlined,
-                          color: Colors.grey,
+                    Card(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefix: Text('     ', style: GoogleFonts.goldman()), // Add some space before the label text
+                          suffixIcon: Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: Colors.grey,
+                          ),
+                          labelText: '    Password',
+                          labelStyle: GoogleFonts.goldman().copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(184, 0, 0, 0),
+                          ),
                         ),
-                      labelText: '    Password',
-                      labelStyle: GoogleFonts.goldman().copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(184, 0, 0, 0),
-                      ),
                       ),
                     ),
-                  ),
                     const SizedBox(
                       height: 25,
                     ),
@@ -144,7 +145,7 @@ class _LoginState extends State<Login> {
                     const SizedBox(
                       height: 15,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.bottomLeft,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -159,12 +160,17 @@ class _LoginState extends State<Login> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text(
-                            "Create New Account",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              color: Color(0xFF7B61FF),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
+                            },
+                            child: Text(
+                              "Create New Account",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                                color: Color(0xFF7B61FF),
+                              ),
                             ),
                           ),
                         ],
