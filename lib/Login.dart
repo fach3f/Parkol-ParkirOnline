@@ -12,7 +12,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffA9BB86),
+      backgroundColor: const Color(0xff0C2F23),
       body: Stack(
         children: [
           Container(
@@ -41,6 +41,19 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 160, left: 140),
+              child: Text(
+                'Silahkan Login',
+                style: GoogleFonts.goldman(
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 200.0),
             child: Container(
@@ -51,35 +64,41 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const TextField(
+                  Card(
+                    child: TextField(
                       decoration: InputDecoration(
+                        prefix: Text('     ',style: GoogleFonts.goldman()),  // Add some space before the label text
                         suffixIcon: Icon(
                           Icons.check,
                           color: Colors.grey,
                         ),
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
+                        labelText: '    Email',
+                        labelStyle:GoogleFonts.goldman().copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(184, 0, 0, 0),
+                          color: Color.fromARGB(184, 0, 0, 0),)
+
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 35,
                     ),
-                    const TextField(
+                  Card(
+                    child: TextField(
                       decoration: InputDecoration(
+                        prefix: Text('     ',style: GoogleFonts.goldman()), // Add some space before the label text
                         suffixIcon: Icon(
-                          Icons.visibility_off,
+                          Icons.remove_red_eye_outlined,
                           color: Colors.grey,
                         ),
-                        labelText: 'Password',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(184, 0, 0, 0),
-                        ),
+                      labelText: '    Password',
+                      labelStyle: GoogleFonts.goldman().copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(184, 0, 0, 0),
+                      ),
                       ),
                     ),
+                  ),
                     const SizedBox(
                       height: 25,
                     ),
