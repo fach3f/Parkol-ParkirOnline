@@ -131,8 +131,7 @@ class _LoginState extends State<Login> {
                       width: 300,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(45),
-                        gradient: const LinearGradient(
-                            colors: [Color.fromARGB(184, 16, 12, 2), Color.fromARGB(184, 11, 9, 3)]),
+                        color: const Color.fromARGB(255, 110, 109, 109)
                       ),
                       child: TextButton(
                         onPressed: () {},
