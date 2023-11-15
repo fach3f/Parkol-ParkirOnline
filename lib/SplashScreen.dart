@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parkol/Login.dart';
 import 'dart:async';
 import 'package:parkol/home.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -24,7 +25,7 @@ class _SplashScreen extends State<SplashScreen> {
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Home()),
+        MaterialPageRoute(builder: (context) => Login()),
       );
     });
   }
