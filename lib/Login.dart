@@ -43,14 +43,23 @@ class _LoginState extends State<Login> {
           ),
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 160, left: 140),
-              child: Text(
-                'Silahkan Login',
-                style: GoogleFonts.goldman(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+              padding: const EdgeInsets.only(top: 190, left: 160),
+              child: Row(
+                children: [
+                  Text(
+                    'Silahkan Login',
+                    style: GoogleFonts.goldman(
+                      fontSize: 10,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(width: 15),  // Adjust the spacing as needed
+                  Icon(
+                    Icons.info_outline,
+                    color: Colors.grey,
+                  ),
+                ],
               ),
             ),
           ),
