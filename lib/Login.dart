@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:parkol/home.dart';
 import 'package:parkol/Signup.dart';
+import 'package:parkol/kapasitas.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -136,7 +137,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Kapasitas()));
                         },
                         child: const Text(
                           'SIGN IN',

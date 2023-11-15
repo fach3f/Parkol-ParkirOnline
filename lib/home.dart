@@ -45,7 +45,11 @@ class _HomeContentState extends State<HomeContent> {
             label: 'Info',
           ),
           BottomNavigationBarItem(
+<<<<<<< Updated upstream
             icon: Icon(Icons.car_rental),
+=======
+            icon: Icon(Icons.local_parking),
+>>>>>>> Stashed changes
             label: 'Parkir',
           ),
           BottomNavigationBarItem(
