@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parkol/Login.dart';
+import 'package:parkol/map.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -150,7 +150,7 @@ class _SignupState extends State<Signup> {
                         color: Color(0XFF838383)
                       ),
                       child: TextButton(
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => map()));
                         },
                         child: const Text(
                           'CONFIRM',
