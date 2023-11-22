@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:parkol/Signup.dart';
-import 'package:parkol/kapasitas.dart';
+import 'package:parkol/landing.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class _LoginState extends State<Login> {
         children: [
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 90, left: 90),
+              padding:  const EdgeInsets.only(left: 80.10,top: 90),
               child: Text(
                 'PARKOL',
                 style: GoogleFonts.goldman(
@@ -33,7 +32,7 @@ class _LoginState extends State<Login> {
           ),
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 160, left: 140),
+              padding:  const EdgeInsets.only(left: 120.10,top: 150),
               child: Text(
                 'Parkir Online',
                 style: GoogleFonts.goldman(
@@ -46,7 +45,7 @@ class _LoginState extends State<Login> {
           ),
           Container(
             child: Padding(
-              padding: const EdgeInsets.only(top: 190, left: 160),
+              padding:  const EdgeInsets.only(left: 150.10,top: 180),
               child: Row(
                 children: [
                   Text(
@@ -137,7 +136,7 @@ class _LoginState extends State<Login> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Kapasitas()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => landing()));
                         },
                         child: const Text(
                           'SIGN IN',
