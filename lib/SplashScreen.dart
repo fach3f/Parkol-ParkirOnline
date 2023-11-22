@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parkol/Login.dart';
 import 'dart:async';
-import 'package:parkol/home.dart';
+
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreen extends StatefulWidget {

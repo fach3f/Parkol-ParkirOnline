@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parkol/home.dart';
+
 import 'package:parkol/Signup.dart';
 import 'package:parkol/kapasitas.dart';
 
