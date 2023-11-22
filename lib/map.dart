@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/Login.dart';
 
 
 class map extends StatelessWidget {
@@ -195,28 +196,32 @@ class map extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Container(
-                            // autogroup6bnbk8R (FgTJMjmRhgrJZ63kFF6bNB)
-                            margin: EdgeInsets.fromLTRB(8*fem, 0*fem, 3*fem, 0*fem),
-                            width: double.infinity,
-                            height: 46*fem,
-                            decoration: BoxDecoration (
-                              border: Border.all(color: Color(0xff3c3c3c)),
-                              color: Color(0xff3c3c3c),
-                              borderRadius: BorderRadius.circular(23*fem),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Cari Parkir',
-                                style:GoogleFonts.goldman(
-                                  fontSize: 24*ffem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.2*ffem/fem,
-                                  color: Color(0xffffffff),
+                          InkWell(
+                            onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                            },
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(8*fem, 0*fem, 3*fem, 0*fem),
+                              width: double.infinity,
+                              height: 46*fem,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Color(0xff3c3c3c)),
+                                color: Color(0xff3c3c3c),
+                                borderRadius: BorderRadius.circular(23*fem),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Cari Parkir',
+                                  style: GoogleFonts.goldman(
+                                    fontSize: 24*ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.2*ffem/fem,
+                                    color: Color(0xffffffff),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),
