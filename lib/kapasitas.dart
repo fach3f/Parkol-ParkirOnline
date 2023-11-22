@@ -83,8 +83,120 @@ class _KapasitasState extends State<Kapasitas> {
                           ),
                         ),
                       ),
+                      Padding(padding: EdgeInsets.only(left:37)),
+                       Text(
+                      "3/6",
+                      style: GoogleFonts.goldman(
+                        fontSize: 20,
+                        // Ganti gaya teks sesuai kebutuhan
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 40),
+                      child: Icon(Icons.car_rental,
+                      size: 50,
+                      color: Colors.black,)
+                    )
                     ],
                   ),
+                  SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(padding: EdgeInsets.all(10)),
+                    Text(
+                      "Lantai 2",
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.goldman(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.all(15)),
+                    Text(
+                      "3/6",
+                      style: GoogleFonts.goldman(
+                        fontSize: 20,
+                      ),
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 37),
+                    child: Icon(Icons.stop_circle,size: 50,color: Colors.red,),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(padding: EdgeInsets.only(left: 15, top: 120)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Harga Parkir",
+                          textAlign: TextAlign.start,
+                          style: GoogleFonts.goldman(
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Text(
+                          "Motor", // Ganti dengan teks yang ingin Anda tambahkan di bawah
+                          style: TextStyle(
+                            fontSize: 20,
+                            // Ganti gaya teks sesuai kebutuhan
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding:EdgeInsets.all(10),
+                              child: Text(
+                                "1 Jam Pertma", // Ganti dengan teks yang ingin Anda tambahkan di bawah
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  // Ganti gaya teks sesuai kebutuhan
+                                ),
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                            SizedBox(height: 10), // Memberikan jarak antara dua teks
+                            Text(
+                              "1 Jam Pertama", // Ganti dengan teks yang ingin Anda tambahkan di sebelahnya
+                              style: TextStyle(
+                                fontSize: 15,
+                                // Ganti gaya teks sesuai kebutuhan
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Text(
+                          "Mobil", // Ganti dengan teks yang ingin Anda tambahkan di bawah
+                          style: TextStyle(
+                            fontSize: 20,
+                            // Ganti gaya teks sesuai kebutuhan
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          "1 Jam Pertama", // Ganti dengan teks yang ingin Anda tambahkan di bawah
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+
                 ],
               ),
             ),
