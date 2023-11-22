@@ -17,7 +17,7 @@ class _SignupState extends State<Signup> {
       body: Stack(
         children: [
                 Padding(
-              padding: const EdgeInsets.only(top: 90, left: 87),
+              padding: const EdgeInsets.only(top: 90, left: 85),
               child: Text(
                 'PARKOL',
                 style: GoogleFonts.goldman(
@@ -41,9 +41,11 @@ class _SignupState extends State<Signup> {
             ),
 
 
-             Padding(
-              padding: const EdgeInsets.only(top: 190, left: 150),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 190),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Center the children horizontally
                 children: [
                   Text(
                     'Create Account',
@@ -61,6 +63,7 @@ class _SignupState extends State<Signup> {
                 ],
               ),
             ),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 200.0),
             child: Container(
