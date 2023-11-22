@@ -33,7 +33,7 @@ class landing extends StatelessWidget {
             ),
             SizedBox(height: 40),
             Image.asset(
-              'assets/.png',  // Gantilah dengan path logo aplikasi Anda
+              'assets/logo1.png',  // Gantilah dengan path logo aplikasi Anda
               width: 150,
               height: 150,
               fit: BoxFit.scaleDown,
