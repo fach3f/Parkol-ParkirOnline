@@ -152,7 +152,7 @@ class _KapasitasState extends State<Kapasitas> {
                             ),
                             SizedBox(height: 10),
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                   padding: EdgeInsets.all(10),
@@ -164,14 +164,13 @@ class _KapasitasState extends State<Kapasitas> {
                                     textAlign: TextAlign.start,
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                Padding(padding: EdgeInsets.only(left: 30)),
                                 Text(
-                                  "1 Jam Pertama",
+                                  "Rp. 10.000",
                                   style: TextStyle(
                                     fontSize: 15,
                                   ),
                                 ),
-
                               ],
                             ),
                             SizedBox(height: 10),
@@ -182,11 +181,27 @@ class _KapasitasState extends State<Kapasitas> {
                               ),
                             ),
                             SizedBox(height: 10),
-                            Text(
-                              "1 Jam Pertama",
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Text(
+                                    "1 Jam Pertama",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                                Padding(padding: EdgeInsets.only(left: 30)),
+                                Text(
+                                  "Rp. 10.000",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
                             ),
 
                           ],
