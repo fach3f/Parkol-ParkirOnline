@@ -1,10 +1,10 @@
+
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parkol/Login.dart';
-import 'package:parkol/Signup.dart';
 import 'package:parkol/kapasitas.dart';
 import 'package:parkol/map.dart';
-
+import 'package:parkol/Chart.dart';
 class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,10 +14,12 @@ class Landing extends StatelessWidget {
     );
   }
 }
+
 class HomeContent extends StatefulWidget {
   @override
   _HomeContentState createState() => _HomeContentState();
 }
+
 class _HomeContentState extends State<HomeContent> {
   int _selectedIndex = 0;
 
@@ -34,38 +36,26 @@ class _HomeContentState extends State<HomeContent> {
         index: _selectedIndex,
         children: <Widget>[
           Home(),
+          Kapasitas(),
           map(),
-          Signup(),
-          Login(),
+          LineChartSample7(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.flight_land),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: 'More',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_parking),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.auto_graph_rounded),
-            label: 'Data',
-          ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: const Color(0xff0C2F23),
+        color: Colors.white,
+        index: _selectedIndex,
+        items: <Widget>[
+          Icon(Icons.flight_land, size: 30),
+          Icon(Icons.attach_money, size: 30),
+          Icon(Icons.local_parking, size: 30),
+          Icon(Icons.auto_graph_rounded, size: 30),
         ],
-        currentIndex: _selectedIndex,
         onTap: onTabTapped,
       ),
     );
   }
 }
-
-
 
 class Home extends StatelessWidget {
   @override
@@ -95,7 +85,7 @@ class Home extends StatelessWidget {
             ),
             SizedBox(height: 40),
             Image.asset(
-              'assets/logo.png',  // Gantilah dengan path logo aplikasi Anda
+              'assets/logo.png',  //
               width: 150,
               height: 150,
               fit: BoxFit.contain,

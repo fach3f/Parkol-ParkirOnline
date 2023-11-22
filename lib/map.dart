@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:parkol/Login.dart';
+import 'package:parkol/slo1.dart';
 
 
 class map extends StatelessWidget {
@@ -198,7 +199,7 @@ class map extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Lantai1()));
                             },
                             child: Container(
                               margin: EdgeInsets.fromLTRB(8*fem, 0*fem, 3*fem, 0*fem),
