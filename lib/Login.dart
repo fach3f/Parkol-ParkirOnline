@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:parkol/Signup.dart';
+import 'package:parkol/signup.dart';
 import 'package:parkol/landing.dart';
+import 'package:parkol/services/api_services.dart'; // Import your API service
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -11,6 +12,67 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  // Instantiate your API service
+  apilogin apiService = apilogin();
+
+  Future<void> login() async {
+    try {
+      // Get user input
+      String username = usernameController.text;
+      String password = passwordController.text;
+
+      // Call the login API endpoint using your instantiated ApiService
+      await api.login(username, password);
+
+      // Show success popup
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Login Successful"),
+            content: Text("You have successfully logged in."),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+
+      // Navigate to the landing screen on successful login
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Landing()));
+    } catch (error) {
+      // Show error popup
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Login Failed"),
+            content: Text("Login failed. Please check your credentials."),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+
+      // Handle errors (you may want to log the error or perform additional actions)
+      print('Login failed: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +145,7 @@ class _LoginState extends State<Login> {
                             Icons.check,
                             color: Colors.grey,
                           ),
-                          labelText: '    Email',
+                          labelText: '    username',
                           labelStyle: GoogleFonts.goldman().copyWith(
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(184, 0, 0, 0),
@@ -135,9 +197,7 @@ class _LoginState extends State<Login> {
                         color: const Color.fromARGB(255, 110, 109, 109)
                       ),
                       child: TextButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Landing()));
-                        },
+                        onPressed: login,
                         child: const Text(
                           'SIGN IN',
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),

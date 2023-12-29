@@ -2,15 +2,15 @@
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:8080';
+  static const String baseUrl = 'http://10.0.2.2:8080';
 
-  static Future<void> signup(String email, String password) async {
-    final apiUrl = '$baseUrl/signup'; // Replace with your actual API endpoint
+  static Future<void> signup(String username, String password) async {
+    final apiUrl = '$baseUrl/register'; // Replace with your actual API endpoint
 
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
-        body: {'email': email, 'password': password},
+        body: {"username": username, "password": password},
       );
 
       if (response.statusCode == 200) {
@@ -25,29 +25,31 @@ class ApiService {
   }
 }
 
-class apilogin {
-  static const String baseUrl = 'http://localhost:8080';
+class ApiLogin {
+  static const String baseUrl = 'http://10.0.2.2:8080';
 
-  static Future<void> login(String email, String password) async {
-    final apiUrl = '$baseUrl/login'; // Ganti dengan endpoint API login yang sesuai
+  static Future<bool> login(String username, String password) async {
+    final apiUrl = '$baseUrl/login'; // Replace with your actual API endpoint
 
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
-        body: {'email': email, 'password': password},
+        body: {"username": username, "password": password},
       );
 
       if (response.statusCode == 200) {
         print('Login successful');
-        // Handle response data if needed
+        return true; // Indicate successful login
+      } else if (response.statusCode == 401) {
+        print('Login failed: Incorrect username or password');
       } else {
         print('Login failed with status code: ${response.statusCode}');
         print('Response body: ${response.body}');
-        // Handle error response if needed
       }
     } catch (error) {
-      print('Error during login: $error');
-      // Handle other errors, such as network issues
+      print('Error during Login: $error');
     }
+
+    return false; // Indicate failed login
   }
 }
