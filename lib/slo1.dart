@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/slo2.dart';
 
 
 class Lantai1 extends StatelessWidget {
@@ -110,6 +111,14 @@ class Lantai1 extends StatelessWidget {
                                   color: Color(0xffffffff),
                                   borderRadius: BorderRadius.circular(50*fem),
                                 ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigasi ke halaman baru ketika container ditekan
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Lantai2()),
+                                    );
+                                  },
                                 child: Center(
                                   child: Text(
                                     '2nd Floor',
@@ -121,6 +130,7 @@ class Lantai1 extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                              ),
                               ),
                             ],
                           ),
@@ -316,33 +326,48 @@ class Lantai1 extends StatelessWidget {
                                       // a02mfo (6:1009)
                                       left: 140*fem,
                                       top: 20*fem,
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 32*fem,
-                                          height: 24*fem,
+                                      child: Container(
+                                        width: 89*fem,
+                                        height: 33*fem,
+                                        decoration: BoxDecoration (
+                                          border: Border.all(color: Color(0xffa9bb86)),
+                                          color: Color(0xffffffff),
+                                          borderRadius: BorderRadius.circular(10*fem),
+                                        ),
+                                      child: Center(
+                                        child: Text(
+                                          'A02',
+                                          style: GoogleFonts.goldman(
+                                            fontSize: 16*ffem,
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.445*ffem/fem,
+                                            color: Color(0xff000000),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    ),
+                                    Positioned(
+                                      // kisspngcardoorhotellyonextensi (6:1034)
+                                      left: 0*fem,
+                                      top: 6*fem,
+                                      child: Container(
+                                        width: 89*fem,
+                                        height: 33*fem,
+                                        decoration: BoxDecoration (
+                                          border: Border.all(color: Color(0xffa9bb86)),
+                                          color: Color(0xffffffff),
+                                          borderRadius: BorderRadius.circular(10*fem),
+                                        ),
+                                        child: Center(
                                           child: Text(
-                                            'A02',
+                                            'A01',
                                             style: GoogleFonts.goldman(
                                               fontSize: 16*ffem,
                                               fontWeight: FontWeight.w600,
                                               height: 1.445*ffem/fem,
                                               color: Color(0xff000000),
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      // kisspngcardoorhotellyonextensi (6:1034)
-                                      left: 0*fem,
-                                      top: 6*fem,
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 95*fem,
-                                          height: 51*fem,
-                                          child: Image.asset(
-                                            'assets/mobil.png',
-                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -355,9 +380,25 @@ class Lantai1 extends StatelessWidget {
                                         child: SizedBox(
                                           width: 94*fem,
                                           height: 51*fem,
-                                          child: Image.asset(
-                                            'assets/mobil.png',
-                                            fit: BoxFit.cover,
+                                          child: Container(
+                                            width: 89*fem,
+                                            height: 33*fem,
+                                            decoration: BoxDecoration (
+                                              border: Border.all(color: Color(0xffa9bb86)),
+                                              color: Color(0xffffffff),
+                                              borderRadius: BorderRadius.circular(10*fem),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'A04',
+                                                style: GoogleFonts.goldman(
+                                                  fontSize: 16*ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.445*ffem/fem,
+                                                  color: Color(0xff000000),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -366,13 +407,23 @@ class Lantai1 extends StatelessWidget {
                                       // kisspngcardoorhotellyonextensi (6:1038)
                                       left: 110*fem,
                                       top: 144*fem,
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 94*fem,
-                                          height: 51*fem,
-                                          child: Image.asset(
-                                            'assets/mobil.png',
-                                            fit: BoxFit.cover,
+                                      child: Container(
+                                        width: 89*fem,
+                                        height: 33*fem,
+                                        decoration: BoxDecoration (
+                                          border: Border.all(color: Color(0xffa9bb86)),
+                                          color: Color(0xffffffff),
+                                          borderRadius: BorderRadius.circular(10*fem),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'A04',
+                                            style: GoogleFonts.goldman(
+                                              fontSize: 16*ffem,
+                                              fontWeight: FontWeight.w600,
+                                              height: 1.445*ffem/fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
