@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 
 class Kapasitas extends StatefulWidget {
@@ -9,6 +11,39 @@ class Kapasitas extends StatefulWidget {
 }
 
 class _KapasitasState extends State<Kapasitas> {
+  String totalKendaraanLantai1 = '0'; // Provide an initial value
+  String totalKendaraanLantai2 = '0'; // Provide an initial value
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+Future<void> fetchData() async {
+  try {
+    // Make API calls to get data for lantai 1 and lantai 2
+    final responseLantai1 = await http.get(Uri.parse('http://10.0.2.2:8080/total-kendaraan-lantai-1'));
+    final responseLantai2 = await http.get(Uri.parse('http://10.0.2.2:8080/total-kendaraan-lantai-2'));
+
+    // Parse the JSON responses
+    final dataLantai1 = jsonDecode(responseLantai1.body);
+    final dataLantai2 = jsonDecode(responseLantai2.body);
+
+    // Extract the totalKendaraan values directly
+    totalKendaraanLantai1 = dataLantai1['totalKendaraan'].toString();
+    totalKendaraanLantai2 = dataLantai2['totalKendaraan'].toString();
+
+    // Update the UI by calling setState
+    setState(() {});
+  } catch (error) {
+    print('Error fetching data: $error');
+    // Handle errors, e.g., show an error message to the user
+  }
+}
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,15 +121,11 @@ class _KapasitasState extends State<Kapasitas> {
                         ),
                         Padding(padding: EdgeInsets.only(left: 37)),
                         Text(
-                          "3/6",
+                          totalKendaraanLantai1 == '6' ? 'Full' : '$totalKendaraanLantai1/6',
                           style: GoogleFonts.goldman(
                             fontSize: 20,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 40),
-                          child: Icon(Icons.car_rental, size: 50, color: Colors.black),
-                        )
                       ],
                     ),
                     SizedBox(height: 30),
@@ -103,7 +134,7 @@ class _KapasitasState extends State<Kapasitas> {
                       children: [
                         Padding(padding: EdgeInsets.all(10)),
                         Text(
-                          "Lantai 2",
+                          'Lantai 2',
                           textAlign: TextAlign.start,
                           style: GoogleFonts.goldman(
                             textStyle: TextStyle(
@@ -112,20 +143,16 @@ class _KapasitasState extends State<Kapasitas> {
                             ),
                           ),
                         ),
-                        Padding(padding: EdgeInsets.all(15)),
+                        Padding(padding: EdgeInsets.only(left: 37)),
                         Text(
-                          "3/6",
+                          totalKendaraanLantai2 == '6' ? 'Full' : '$totalKendaraanLantai2/6',
                           style: GoogleFonts.goldman(
                             fontSize: 20,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 37),
-                          child: Icon(Icons.stop_circle, size: 50, color: Colors.red),
-                        ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 50),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

@@ -4,6 +4,7 @@ import 'package:parkol/signup.dart';
 import 'package:parkol/landing.dart';
 import 'package:parkol/services/api_services.dart'; // Import your API service
 
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -16,17 +17,19 @@ class _LoginState extends State<Login> {
   TextEditingController passwordController = TextEditingController();
 
   // Instantiate your API service
-  apilogin apiService = apilogin();
+  ApiLogin apiLogin = ApiLogin();
 
-  Future<void> login() async {
-    try {
-      // Get user input
-      String username = usernameController.text;
-      String password = passwordController.text;
+Future<void> login() async {
+  try {
+    // Get user input from text controllers
+    String username = usernameController.text;
+    String password = passwordController.text;
 
-      // Call the login API endpoint using your instantiated ApiService
-      await api.login(username, password);
+    // Call the login API endpoint using your instantiated ApiService
+    bool loginSuccess = await ApiLogin.login(username, password);
 
+    // Check if the login was successful
+    if (loginSuccess) {
       // Show success popup
       showDialog(
         context: context,
@@ -48,7 +51,7 @@ class _LoginState extends State<Login> {
 
       // Navigate to the landing screen on successful login
       Navigator.push(context, MaterialPageRoute(builder: (context) => Landing()));
-    } catch (error) {
+    } else {
       // Show error popup
       showDialog(
         context: context,
@@ -67,11 +70,13 @@ class _LoginState extends State<Login> {
           );
         },
       );
-
-      // Handle errors (you may want to log the error or perform additional actions)
-      print('Login failed: $error');
     }
+  } catch (error) {
+    // Handle other errors (you may want to log the error or perform additional actions)
+    print('Login failed: $error');
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +144,7 @@ class _LoginState extends State<Login> {
                   children: [
                     Card(
                       child: TextField(
+                        controller: usernameController,
                         decoration: InputDecoration(
                           prefix: Text('     ', style: GoogleFonts.goldman()),  // Add some space before the label text
                           suffixIcon: Icon(
@@ -158,6 +164,7 @@ class _LoginState extends State<Login> {
                     ),
                     Card(
                       child: TextField(
+                        controller: passwordController,
                         decoration: InputDecoration(
                           prefix: Text('     ', style: GoogleFonts.goldman()), // Add some space before the label text
                           suffixIcon: Icon(
