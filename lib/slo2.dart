@@ -1,3 +1,4 @@
+import 'package:parkol/slo1.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +14,6 @@ class Lantai2 extends StatelessWidget {
         child: Container(
           width: double.infinity,
           child: Container(
-            // iphonexxs11pro38dUV (6:929)
             padding: EdgeInsets.fromLTRB(22*fem, 61*fem, 30*fem, 17*fem),
             width: double.infinity,
             decoration: BoxDecoration (
@@ -24,25 +24,29 @@ class Lantai2 extends StatelessWidget {
               children: [
                 Container(
                   // autogroup2dq5uwo (FgSTfdu64oGbH1NX6X2Dq5)
-                  margin: EdgeInsets.fromLTRB(10*fem, 0*fem, 0*fem, 21*fem),
+                  margin: EdgeInsets.fromLTRB(5*fem, 0*fem, 0*fem, 21*fem),
                   width: double.infinity,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        // frameEjB (6:983)
-                        margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 1*fem, 0*fem),
-                        width: 23*fem,
-                        height: 16.03*fem,
-                        child: Image.asset(
-                          'assets/back.png',
-                          width: 23*fem,
-                          height: 16.03*fem,
+                        margin: EdgeInsets.fromLTRB(0 * fem, 10 * fem, 3 * fem, 0 * fem),
+                        width: 23 * fem,
+                        height: 20 * fem,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context); // Logika untuk kembali ke halaman sebelumnya
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                            size: 30 * fem,
+                          ),
                         ),
                       ),
                       Container(
                         // pickparkingspotx9P (6:980)
-                        margin: EdgeInsets.fromLTRB(0*fem, 8*fem, 0*fem, 0*fem),
+                        margin: EdgeInsets.fromLTRB(10*fem, 8*fem, 0*fem, 0*fem),
                         child: Text(
                           'Pick Parking Spot',
                           style: GoogleFonts.goldman(
@@ -86,17 +90,26 @@ class Lantai2 extends StatelessWidget {
                                     height: double.infinity,
                                     decoration: BoxDecoration (
                                       border: Border.all(color: Color(0xffa9bb86)),
-                                      color: Color(0xffa9bb86),
+                                      color: Color(0xffffffff),
                                       borderRadius: BorderRadius.circular(50*fem),
                                     ),
-                                    child: Center(
-                                      child: Text(
-                                        '1st Floor',
-                                        style: GoogleFonts.goldman(
-                                          fontSize: 16*ffem,
-                                          fontWeight: FontWeight.w600,
-                                          height: 1.445*ffem/fem,
-                                          color: Color(0xffffffff),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        // Navigasi ke halaman baru ketika container ditekan
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => Lantai1()),
+                                        );
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          '1st Floor',
+                                          style: GoogleFonts.goldman(
+                                            fontSize: 16*ffem,
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.445*ffem/fem,
+                                            color: Color(0xffa9bb86),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -107,7 +120,7 @@ class Lantai2 extends StatelessWidget {
                                     height: double.infinity,
                                     decoration: BoxDecoration (
                                       border: Border.all(color: Color(0xffa9bb86)),
-                                      color: Color(0xffffffff),
+                                      color: Color(0xffa9bb86),
                                       borderRadius: BorderRadius.circular(50*fem),
                                     ),
                                     child: Center(
@@ -117,7 +130,7 @@ class Lantai2 extends StatelessWidget {
                                           fontSize: 16*ffem,
                                           fontWeight: FontWeight.w600,
                                           height: 1.445*ffem/fem,
-                                          color: Color(0xffa9bb86),
+                                          color: Color(0xffffffff),
                                         ),
                                       ),
                                     ),
