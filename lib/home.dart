@@ -19,8 +19,10 @@ class menu extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListWidget(gambar: "assets/slot.png", judul: "Pengunjung"),
-          ListWidget(gambar: "assets/kasir.png", judul: "Denah Parkir"),
-          ListWidget(gambar: "assets/slot.png", judul: "Pendapatan"),
+          Divider(color: Colors.white, height: 10.0), // Pemisah
+          ListWidget(gambar: "assets/maps.png", judul: "Denah Parkir"),
+          Divider(color: Colors.white, height: 5.0), // Pemisah
+          ListWidget(gambar: "assets/kasir.png", judul: "Pendapatan"),
         ],
       ),
     );
@@ -36,7 +38,7 @@ class ListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white, // Set the background color here
+      color: const Color(0xff0C2F23), // Set the background color here
       padding: EdgeInsets.all(30.0),
       child: Center(
         child: Row(
@@ -55,3 +57,4 @@ class ListWidget extends StatelessWidget {
     );
   }
 }
+
