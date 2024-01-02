@@ -2,6 +2,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/home.dart';
 import 'package:parkol/kapasitas.dart';
 import 'package:parkol/map.dart';
 import 'package:parkol/Chart.dart';
@@ -37,7 +38,7 @@ class _HomeContentState extends State<HomeContent> {
         children: <Widget>[
           Home(),
           Kapasitas(),
-          map(),
+          menu(),
           LineChartSample7(),
         ],
       ),
