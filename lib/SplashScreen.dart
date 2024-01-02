@@ -17,7 +17,7 @@ class _SplashScreen extends State<SplashScreen> {
   }
 
   splashScreenStart() async {
-    var duration = const Duration(seconds: 3);
+    var duration = const Duration(seconds: 5);
     return Timer(duration, () {
       setState(() {
         isLoading = false;
