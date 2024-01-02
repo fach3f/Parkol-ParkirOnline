@@ -1,25 +1,56 @@
-import 'package:parkol/kapasitas.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:parkol/kapasitas.dart';
 import 'package:parkol/slo2.dart';
 
+class Lantai1 extends StatefulWidget {
+  @override
+  _Lantai1State createState() => _Lantai1State();
+}
 
+class _Lantai1State extends State<Lantai1> {
+  late Future<List<int>> _occupiedSpots;
 
-class Lantai1 extends StatelessWidget {
+  @override
+  void initState() {
+    super.initState();
+    _occupiedSpots = fetchOccupiedSpots();
+  }
+
+  Future<List<int>> fetchOccupiedSpots() async {
+    final response = await http.get(
+      Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/total-kendaraan-lantai-1'),
+    );
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      final List<dynamic> data = jsonData['data'];
+
+      // Mengambil ID dari data yang ditemukan
+      List<int> occupiedIds = data.map<int>((item) => item['id']).toList();
+      return occupiedIds;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
           child: Container(
             // iphonexxs11pro38dUV (6:929)
-            padding: EdgeInsets.fromLTRB(22*fem, 61*fem, 30*fem, 17*fem),
+            padding: EdgeInsets.fromLTRB(22 * fem, 61 * fem, 30 * fem, 17 * fem),
             width: double.infinity,
-            decoration: BoxDecoration (
+            decoration: BoxDecoration(
               color: Color(0xff295341),
             ),
             child: Column(
@@ -27,7 +58,7 @@ class Lantai1 extends StatelessWidget {
               children: [
                 Container(
                   // autogroup2dq5uwo (FgSTfdu64oGbH1NX6X2Dq5)
-                  margin: EdgeInsets.fromLTRB(5*fem, 0*fem, 0*fem, 21*fem),
+                  margin: EdgeInsets.fromLTRB(5 * fem, 0 * fem, 0 * fem, 21 * fem),
                   width: double.infinity,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,10 +69,7 @@ class Lantai1 extends StatelessWidget {
                         height: 20 * fem,
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Lantai2()),
-                            );
+                            Navigator.pop(context);
                           },
                           child: Icon(
                             Icons.arrow_back_ios,
@@ -52,15 +80,16 @@ class Lantai1 extends StatelessWidget {
                       ),
                       Container(
                         // pickparkingspotx9P (6:980)
-                        margin: EdgeInsets.fromLTRB(10*fem, 8*fem, 0*fem, 0*fem), child: Text(
-                        'Pick Parking Spot',
-                        style: GoogleFonts.goldman(
-                          fontSize: 29*ffem,
-                          fontWeight: FontWeight.w700,
-                          height: 1.1600001105*ffem/fem,
-                          color: Color(0xffffffff),
+                        margin: EdgeInsets.fromLTRB(10 * fem, 8 * fem, 0 * fem, 0 * fem),
+                        child: Text(
+                          'Pick Parking Spot',
+                          style: GoogleFonts.goldman(
+                            fontSize: 29 * ffem,
+                            fontWeight: FontWeight.w700,
+                            height: 1.1600001105 * ffem / fem,
+                            color: Color(0xffffffff),
+                          ),
                         ),
-                      ),
                       ),
                     ],
                   ),
@@ -281,7 +310,7 @@ class Lantai1 extends StatelessWidget {
                                                   fontSize: 16*ffem,
                                                   fontWeight: FontWeight.w600,
                                                   height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
+                                                  color: Color.fromARGB(255, 59, 165, 47),
                                                 ),
                                               ),
                                             ),
@@ -306,62 +335,98 @@ class Lantai1 extends StatelessWidget {
                                                   fontSize: 16*ffem,
                                                   fontWeight: FontWeight.w600,
                                                   height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
+                                                  color: Color.fromARGB(255, 165, 47, 47),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        Positioned(
-                                          // a02mfo (6:1009)
-                                          left: 110*fem,
-                                          top: 20*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'A02',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 110 * fem,
+                                                top: 20 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(1) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'A02',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(1) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // kisspngcardoorhotellyonextensi (6:1034)
-                                          left: 4*fem,
-                                          top: 20*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'A01',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 4 * fem,
+                                                top: 20 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(1) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'A01',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(1) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        ),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+
+                          
                                         Positioned(
                                           // kisspngcardoorhotellyonextensi (6:1035)
                                           left: 110*fem,
@@ -385,7 +450,7 @@ class Lantai1 extends StatelessWidget {
                                                       fontSize: 16*ffem,
                                                       fontWeight: FontWeight.w600,
                                                       height: 1.445*ffem/fem,
-                                                      color: Color(0xff000000),
+                                                      color: Color.fromARGB(255, 59, 165, 47),
                                                     ),
                                                   ),
                                                 ),
@@ -412,7 +477,7 @@ class Lantai1 extends StatelessWidget {
                                                   fontSize: 16*ffem,
                                                   fontWeight: FontWeight.w600,
                                                   height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
+                                                  color: Color.fromARGB(255, 59, 165, 47),
                                                 ),
                                               ),
                                             ),

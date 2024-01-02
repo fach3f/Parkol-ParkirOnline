@@ -25,8 +25,8 @@ class _KapasitasState extends State<Kapasitas> {
   Future<void> fetchData() async {
     try {
       // Make API calls to get data for lantai 1 and lantai 2
-      final responseLantai1 = await http.get(Uri.parse('http://10.0.2.2:8080/total-kendaraan-lantai-1'));
-      final responseLantai2 = await http.get(Uri.parse('http://10.0.2.2:8080/total-kendaraan-lantai-2'));
+      final responseLantai1 = await http.get(Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/total-kendaraan-lantai-1'));
+      final responseLantai2 = await http.get(Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/total-kendaraan-lantai-2'));
 
       // Parse the JSON responses
       final dataLantai1 = jsonDecode(responseLantai1.body);
