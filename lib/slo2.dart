@@ -1,8 +1,40 @@
-import 'package:parkol/slo1.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:parkol/kapasitas.dart';
+import 'package:parkol/slo1.dart';
 
-class Lantai2 extends StatelessWidget {
+class Lantai2 extends StatefulWidget {
+  @override
+  _Lantai2State createState() => _Lantai2State();
+}
+
+class _Lantai2State extends State<Lantai2> {
+  late Future<List<int>> _occupiedSpots;
+
+  @override
+  void initState() {
+    super.initState();
+    _occupiedSpots = fetchOccupiedSpots();
+  }
+
+  Future<List<int>> fetchOccupiedSpots() async {
+    final response = await http.get(
+      Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/total-kendaraan-lantai-2'),
+    );
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      final List<dynamic> data = jsonData['data'];
+
+      // Mengambil ID dari data yang ditemukan
+      List<int> occupiedIds = data.map<int>((item) => item['id']).toList();
+      return occupiedIds;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -256,162 +288,260 @@ class Lantai2 extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        Positioned(
-                                          // group1563tTb (6:1042)
-                                          left: 6*fem,
-                                          top: 81*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'B03',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // group1564XmT (6:1043)
-                                          left: 4*fem,
-                                          top: 154*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'B05',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // a02mfo (6:1009)
-                                          left: 110*fem,
-                                          top: 20*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'B02',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // kisspngcardoorhotellyonextensi (6:1034)
-                                          left: 4*fem,
-                                          top: 20*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'B01',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // kisspngcardoorhotellyonextensi (6:1035)
-                                          left: 110*fem,
-                                          top: 80*fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 89*fem,
-                                              height: 33*fem,
-                                              child: Container(
-                                                width: 89*fem,
-                                                height: 33*fem,
-                                                decoration: BoxDecoration (
-                                                  border: Border.all(color: Color(0xffa9bb86)),
-                                                  color: Color(0xffffffff),
-                                                  borderRadius: BorderRadius.circular(10*fem),
-                                                ),
-                                                child: Center(
-                                                  child: Text(
-                                                    'B04',
-                                                    style: GoogleFonts.goldman(
-                                                      fontSize: 16*ffem,
-                                                      fontWeight: FontWeight.w600,
-                                                      height: 1.445*ffem/fem,
-                                                      color: Color(0xff000000),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 5 * fem,
+                                                top: 81 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(9) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'B03',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(9) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // kisspngcardoorhotellyonextensi (6:1038)
-                                          left: 110*fem,
-                                          top: 154*fem,
-                                          child: Container(
-                                            width: 89*fem,
-                                            height: 33*fem,
-                                            decoration: BoxDecoration (
-                                              border: Border.all(color: Color(0xffa9bb86)),
-                                              color: Color(0xffffffff),
-                                              borderRadius: BorderRadius.circular(10*fem),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'B06',
-                                                style: GoogleFonts.goldman(
-                                                  fontSize: 16*ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height: 1.445*ffem/fem,
-                                                  color: Color(0xff000000),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 4 * fem,
+                                                top: 154 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(11) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'B05',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(11) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        ),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 110 * fem,
+                                                top: 20 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(8) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'B02',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(8) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 4 * fem,
+                                                top: 20 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(7) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'B01',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(7) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+
+                          
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 110 * fem,
+                                                top: 80 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(10) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'B04',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(10) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    FutureBuilder<List<int>>(
+                                      future: _occupiedSpots,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator();
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else {
+                                          List<int> occupiedIds = snapshot.data!;
+
+                                          return Stack(
+                                            children: [
+                                              Positioned(
+                                                left: 110 * fem,
+                                                top: 154 * fem,
+                                                child: Container(
+                                                  width: 89 * fem,
+                                                  height: 33 * fem,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(color: Color(0xffa9bb86)),
+                                                    color: occupiedIds.contains(12) ? Color.fromARGB(255, 165, 47, 47) : Color(0xffffffff),
+                                                    borderRadius: BorderRadius.circular(10 * fem),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'B06',
+                                                      style: GoogleFonts.goldman(
+                                                        fontSize: 16 * ffem,
+                                                        fontWeight: FontWeight.w600,
+                                                        height: 1.445 * ffem / fem,
+                                                        color: occupiedIds.contains(12) ? Colors.white : Color.fromARGB(255, 59, 165, 47),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              // Tambahkan widget lainnya di sini sesuai kebutuhan
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
                                       ],
                                     ),
                                   ),
