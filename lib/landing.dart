@@ -37,7 +37,7 @@ class _HomeContentState extends State<HomeContent> {
         index: _selectedIndex,
         children: <Widget>[
           Home(),
-          map(),
+          Kapasitas(),
           menu(),
           LineChartSample7(),
         ],
