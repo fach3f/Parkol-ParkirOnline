@@ -2,7 +2,7 @@ import 'package:dio/dio.dart'; // Import Dio package
 import 'package:http/http.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://10.0.2.2:8080';
+  static const String baseUrl = 'https://backendparkol-m77laoox7a-uc.a.run.app';
 
   static Future<void> signup(String username, String password) async {
     final apiUrl = '$baseUrl/register'; // Replace with your actual API endpoint
@@ -26,7 +26,7 @@ class ApiService {
 }
 
 class ApiLogin {
-  static const String baseUrl = 'http://10.0.2.2:8080';
+  static const String baseUrl = 'https://backendparkol-m77laoox7a-uc.a.run.app';
 
   static Future<bool> validateCredentials(String username, String password) async {
     final apiUrl = '$baseUrl/login'; // Replace with your actual API endpoint for validation
