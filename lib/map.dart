@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-class map extends StatefulWidget {
+class Pendapatan extends StatefulWidget {
   @override
   _mapState createState() => _mapState();
 }
 
-class _mapState extends State<map> {
+class _mapState extends State<Pendapatan> {
   // Variabel untuk menyimpan data dari API
   String mobilTanggal = "";
   String mobilTotal = "";
