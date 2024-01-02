@@ -40,7 +40,7 @@ class Lantai1 extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Kapasitas()),
+                              MaterialPageRoute(builder: (context) => Lantai2()),
                             );
                           },
                           child: Icon(
@@ -124,7 +124,7 @@ class Lantai1 extends StatelessWidget {
                                         // Navigasi ke halaman baru ketika container ditekan
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => Lantai2()),
+                                          MaterialPageRoute(builder: (context) => Kapasitas()),
                                         );
                                       },
                                       child: Center(
@@ -263,24 +263,6 @@ class Lantai1 extends StatelessWidget {
                                           ),
                                         ),
                                         Positioned(
-                                          // rectangle50oS9 (6:1001)
-                                          left: 112*fem,
-                                          top: 14*fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 89*fem,
-                                              height: 33*fem,
-                                              child: Container(
-                                                decoration: BoxDecoration (
-                                                  borderRadius: BorderRadius.circular(10*fem),
-                                                  border: Border.all(color: Color(0xffa9bb86)),
-                                                  color: Color(0xffffffff),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
                                           // group1563tTb (6:1042)
                                           left: 6*fem,
                                           top: 81*fem,
@@ -332,7 +314,7 @@ class Lantai1 extends StatelessWidget {
                                         ),
                                         Positioned(
                                           // a02mfo (6:1009)
-                                          left: 140*fem,
+                                          left: 110*fem,
                                           top: 20*fem,
                                           child: Container(
                                             width: 89*fem,
@@ -357,8 +339,8 @@ class Lantai1 extends StatelessWidget {
                                         ),
                                         Positioned(
                                           // kisspngcardoorhotellyonextensi (6:1034)
-                                          left: 0*fem,
-                                          top: 6*fem,
+                                          left: 4*fem,
+                                          top: 20*fem,
                                           child: Container(
                                             width: 89*fem,
                                             height: 33*fem,
@@ -383,11 +365,11 @@ class Lantai1 extends StatelessWidget {
                                         Positioned(
                                           // kisspngcardoorhotellyonextensi (6:1035)
                                           left: 110*fem,
-                                          top: 72*fem,
+                                          top: 80*fem,
                                           child: Align(
                                             child: SizedBox(
-                                              width: 94*fem,
-                                              height: 51*fem,
+                                              width: 89*fem,
+                                              height: 33*fem,
                                               child: Container(
                                                 width: 89*fem,
                                                 height: 33*fem,
@@ -414,7 +396,7 @@ class Lantai1 extends StatelessWidget {
                                         Positioned(
                                           // kisspngcardoorhotellyonextensi (6:1038)
                                           left: 110*fem,
-                                          top: 144*fem,
+                                          top: 154*fem,
                                           child: Container(
                                             width: 89*fem,
                                             height: 33*fem,
@@ -425,7 +407,7 @@ class Lantai1 extends StatelessWidget {
                                             ),
                                             child: Center(
                                               child: Text(
-                                                'A04',
+                                                'A06',
                                                 style: GoogleFonts.goldman(
                                                   fontSize: 16*ffem,
                                                   fontWeight: FontWeight.w600,
