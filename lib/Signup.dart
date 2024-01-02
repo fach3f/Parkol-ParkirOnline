@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/Login.dart';
 import 'package:parkol/map.dart';
 import 'package:parkol/services/api_services.dart'; // Import your API service
 
@@ -50,7 +51,7 @@ Future<void> signup() async {
     );
 
     // Navigate to the map screen on successful signup
-    Navigator.push(context, MaterialPageRoute(builder: (context) => map()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
   } catch (error) {
     // Show error popup
     showDialog(
