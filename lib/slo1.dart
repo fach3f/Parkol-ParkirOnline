@@ -82,7 +82,7 @@ class _Lantai1State extends State<Lantai1> {
                         // pickparkingspotx9P (6:980)
                         margin: EdgeInsets.fromLTRB(10 * fem, 8 * fem, 0 * fem, 0 * fem),
                         child: Text(
-                          'Pick Parking Spot',
+                          'Denah Parkir',
                           style: GoogleFonts.goldman(
                             fontSize: 29 * ffem,
                             fontWeight: FontWeight.w700,
@@ -129,7 +129,7 @@ class _Lantai1State extends State<Lantai1> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        '1st Floor',
+                                        'Lantai 1',
                                         style: GoogleFonts.goldman(
                                           fontSize: 16*ffem,
                                           fontWeight: FontWeight.w600,
@@ -158,7 +158,7 @@ class _Lantai1State extends State<Lantai1> {
                                       },
                                       child: Center(
                                         child: Text(
-                                          '2nd Floor',
+                                          'Lantai 2',
                                           style: GoogleFonts.goldman(
                                             fontSize: 16*ffem,
                                             fontWeight: FontWeight.w600,
@@ -614,37 +614,6 @@ class _Lantai1State extends State<Lantai1> {
                         ),
                       ),
                     ],
-                  ),
-                ),
-                Container(
-                  // line18U8H (6:1013)
-                  margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 213*fem, 30*fem),
-                  width: 2*fem,
-                  height: 42*fem,
-                  decoration: BoxDecoration (
-                    color: Color(0xffa1a1a1),
-                  ),
-                ),
-                Container(
-                  // autogroupdrtmCa5 (FgSYA1RF9GSY1aKQwRDrTM)
-                  margin: EdgeInsets.fromLTRB(19*fem, 0*fem, 7*fem, 0*fem),
-                  width: double.infinity,
-                  height: 48*fem,
-                  decoration: BoxDecoration (
-                    color: Color(0xff3c3c3c),
-                    borderRadius: BorderRadius.circular(50*fem),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Continue',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.goldman(
-                        fontSize: 16*ffem,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2175*ffem/fem,
-                        color: Color(0xffffffff),
-                      ),
-                    ),
                   ),
                 ),
               ],
