@@ -19,7 +19,7 @@ class menu extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListWidget(gambar: "assets/slot.png", judul: "Pengunjung"),
-          ListWidget(gambar: "assets/slot.png", judul: "Denah Parkir"),
+          ListWidget(gambar: "assets/kasir.png", judul: "Denah Parkir"),
           ListWidget(gambar: "assets/slot.png", judul: "Pendapatan"),
         ],
       ),
