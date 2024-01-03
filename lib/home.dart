@@ -19,7 +19,7 @@ class menu extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: const Color(0xff0C2F23),
+      backgroundColor: const Color(0xff295341),
       body: ListView(
         children: <Widget>[
           InkWell(
@@ -31,7 +31,7 @@ class menu extends StatelessWidget {
             },
             child: ListWidget(gambar: "assets/slot.png", judul: "Pengunjung"),
           ),
-          Divider(color: Colors.white, height: 10.0),
+          Divider(color: const Color(0xff295341), height: 10.0),
           InkWell(
             onTap: () {
               Navigator.push(
@@ -41,7 +41,7 @@ class menu extends StatelessWidget {
             },
             child: ListWidget(gambar: "assets/maps.png", judul: "Denah Parkir"),
           ),
-          Divider(color: Colors.white, height: 5.0),
+          Divider(color: const Color(0xff295341), height: 10.0),
           InkWell(
             onTap: () {
               // Handle tap for "Pendapatan"
