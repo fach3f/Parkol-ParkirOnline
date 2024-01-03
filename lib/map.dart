@@ -53,6 +53,7 @@ class _mapState extends State<Pendapatan> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff0C2F23),
+      
       body: Center(
         child: Stack(
           alignment: Alignment.center,

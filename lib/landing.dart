@@ -32,7 +32,7 @@ class _HomeContentState extends State<HomeContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CommonScaffold(
       body: IndexedStack(
         index: _selectedIndex,
         children: <Widget>[
@@ -42,10 +42,27 @@ class _HomeContentState extends State<HomeContent> {
           LineChartSample7(),
         ],
       ),
+      selectedIndex: _selectedIndex,
+      onTabTapped: onTabTapped,
+    );
+  }
+}
+
+class CommonScaffold extends StatelessWidget {
+  final Widget body;
+  final int selectedIndex;
+  final Function(int) onTabTapped;
+
+  CommonScaffold({required this.body, required this.selectedIndex, required this.onTabTapped});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: body,
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: const Color(0xff0C2F23),
         color: Colors.white,
-        index: _selectedIndex,
+        index: selectedIndex,
         items: <Widget>[
           Icon(Icons.flight_land, size: 30),
           Icon(Icons.attach_money, size: 30),
@@ -57,6 +74,7 @@ class _HomeContentState extends State<HomeContent> {
     );
   }
 }
+
 
 class Home extends StatelessWidget {
   @override

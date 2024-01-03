@@ -10,16 +10,6 @@ class pelanggan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff051A16),
-        title: Align(
-          alignment: Alignment.center,
-          child: Text(
-            "SParX",
-            style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),
-          ),
-        ),
-      ),
       backgroundColor: const Color(0xff0C2F23),
       body: ListView(
         children: <Widget>[
@@ -30,7 +20,7 @@ class pelanggan extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => Lantai2()),
               );
             },
-            child: ListWidget(gambar: "assets/slot.png", judul: "Pengunjung"),
+            child: ListWidget(gambar: "assets/slot.png", judul: "1 Hari Kemarin"),
           ),
           Divider(color: Colors.white, height: 10.0),
           InkWell(
@@ -75,7 +65,7 @@ class ListWidget extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               gambar,
-              width: 150.0,
+              width: 100.0,
             ),
             Text(
               judul,
@@ -87,3 +77,5 @@ class ListWidget extends StatelessWidget {
     );
   }
 }
+
+

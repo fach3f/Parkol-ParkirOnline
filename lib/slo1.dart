@@ -75,10 +75,8 @@ class _Lantai1State extends State<Lantai1> {
                         height: 20 * fem,
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                            MaterialPageRoute(builder: (context) => menu()),
-                            );
+                            Navigator.pop(
+                                context); 
                           },
                           child: Icon(
                             Icons.arrow_back_ios,

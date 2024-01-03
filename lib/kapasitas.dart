@@ -49,32 +49,21 @@ class _KapasitasState extends State<Kapasitas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            appBar: AppBar(
+        backgroundColor: const Color(0xff051A16),
+        title: Align(
+          alignment: Alignment.center,
+          child: Text(
+            "SParX",
+            style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),
+          ),
+        ),
+      ),
       backgroundColor: const Color(0xff0C2F23),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(padding: const EdgeInsets.all(0)),
-                  Text(
-                    'SParX',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.goldman(
-                      textStyle: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Card(
               elevation: 3,
               margin: EdgeInsets.all(20),
