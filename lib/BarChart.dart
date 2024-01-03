@@ -19,8 +19,11 @@ class chart3 extends StatelessWidget {
         backgroundColor: const Color(0xff051A16), // Ganti warna AppBar sesuai keinginan
       ),
       backgroundColor: const Color(0xff0C2F23), // Ganti warna latar belakang sesuai keinginan
-      body: BarChart(
-        BarChartData(
+      body: Stack(
+        children: [
+      Positioned.fill(
+      child: BarChart(
+      BarChartData(
           barTouchData: barTouchData,
           titlesData: titlesData,
           borderData: borderData,
@@ -30,8 +33,27 @@ class chart3 extends StatelessWidget {
           maxY: 20,
         ),
       ),
+    ),
+          Positioned(
+            top: 20.0,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                "Data Pendapatan",
+                style: GoogleFonts.goldman(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.contentColorsmoGreen,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
+
 
   BarTouchData get barTouchData => BarTouchData(
     enabled: false,
