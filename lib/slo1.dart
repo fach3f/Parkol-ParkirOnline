@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:parkol/home.dart';
 import 'package:parkol/kapasitas.dart';
 import 'package:parkol/slo2.dart';
 
@@ -76,7 +77,7 @@ class _Lantai1State extends State<Lantai1> {
                           onTap: () {
                             Navigator.push(
                                 context,
-                            MaterialPageRoute(builder: (context) => Kapasitas()),
+                            MaterialPageRoute(builder: (context) => menu()),
                             );
                           },
                           child: Icon(

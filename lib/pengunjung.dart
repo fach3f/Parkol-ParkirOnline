@@ -1,11 +1,12 @@
+
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:parkol/map.dart';
-import 'package:parkol/pengunjung.dart';
 import 'package:parkol/slo1.dart';
 import 'package:parkol/slo2.dart';
 
-class menu extends StatelessWidget {
+class pelanggan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class menu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => pelanggan()),
+                MaterialPageRoute(builder: (context) => Lantai2()),
               );
             },
             child: ListWidget(gambar: "assets/slot.png", judul: "Pengunjung"),

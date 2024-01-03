@@ -49,35 +49,26 @@ class _KapasitasState extends State<Kapasitas> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff295341),
+      backgroundColor: const Color(0xff0C2F23),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
+            SizedBox(height: 30),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(40.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios_new,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  Padding(padding: const EdgeInsets.all(45)),
+                  Padding(padding: const EdgeInsets.all(0)),
                   Text(
-                    'PARKOL',
+                    'SParX',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.goldman(
                       textStyle: TextStyle(
-                        fontSize: 20,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
