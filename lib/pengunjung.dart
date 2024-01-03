@@ -155,7 +155,7 @@ class ListWidget extends StatelessWidget {
 
 Future<Map<String, dynamic>> fetchData(int daysAgo) async {
   try {
-    final response = await http.get(Uri.parse('http://10.0.2.2:8080/average'));
+    final response = await http.get(Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/average'));
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       final List<dynamic> dataList = responseData['data'];

@@ -41,7 +41,7 @@ class _HomeContentState extends State<HomeContent> {
           Home(),
           Kapasitas(),
           menu(),
-          chart(),
+          ChartPage(),
         ],
       ),
       selectedIndex: _selectedIndex,

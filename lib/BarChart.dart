@@ -1,22 +1,50 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class chart extends StatefulWidget {
-  const chart({super.key});
+class ChartPage extends StatefulWidget {
+  const ChartPage({super.key});
 
   @override
-  State<chart> createState() => _chartState();
+  State<ChartPage> createState() => _ChartPageState();
 }
 
-class _chartState extends State<chart> {
-  final List<ChartData> chartData = [
-    ChartData("Indonesia", 100, 222, 65, 354),
-    ChartData("Myanmar", 400, 763, 212, 190),
-    ChartData("China", 564, 234, 529, 238),
-    ChartData("Kanada", 233, 168, 40, 145),
-    ChartData("Amerika", 199, 299, 99, 9),
-  ];
+class _ChartPageState extends State<ChartPage> {
+  late List<ChartData> chartData;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      final response = await http.get(Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/average1'));
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final Map<String, dynamic> data = responseData['data'];
+
+        chartData = [
+          ChartData("Minggu", data['Minggu'], 0, 0, 0),
+          ChartData("Senin", data['Senin'], 0, 0, 0),
+          ChartData("Selasa", data['Selasa'], 0, 0, 0),
+          ChartData("Rabu", data['Rabu'], 0, 0, 0),
+          ChartData("Kamis", data['Kamis'], 0, 0, 0),
+          ChartData("Jumat", data['Jumat'], 0, 0, 0),
+          ChartData("Sabtu", data['Sabtu'], 0, 0, 0),
+        ];
+
+        setState(() {});
+      } else {
+        throw Exception('Failed to load average data. Error: ${response.statusCode}');
+      }
+    } catch (error) {
+      throw Exception('Error fetching average data: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +62,6 @@ class _chartState extends State<chart> {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xff051A16),
-        // Ganti dengan warna yang diinginkan
       ),
       body: Center(
         child: Container(
@@ -45,21 +72,6 @@ class _chartState extends State<chart> {
                 dataSource: chartData,
                 xValueMapper: (ChartData ch, _) => ch.x,
                 yValueMapper: (ChartData ch, _) => ch.y1,
-              ),
-              StackedColumnSeries<ChartData, String>(
-                dataSource: chartData,
-                xValueMapper: (ChartData ch, _) => ch.x,
-                yValueMapper: (ChartData ch, _) => ch.y2,
-              ),
-              StackedColumnSeries<ChartData, String>(
-                dataSource: chartData,
-                xValueMapper: (ChartData ch, _) => ch.x,
-                yValueMapper: (ChartData ch, _) => ch.y3,
-              ),
-              StackedColumnSeries<ChartData, String>(
-                dataSource: chartData,
-                xValueMapper: (ChartData ch, _) => ch.x,
-                yValueMapper: (ChartData ch, _) => ch.y4,
               ),
             ],
           ),
