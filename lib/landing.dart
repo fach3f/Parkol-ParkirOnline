@@ -2,6 +2,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/BarChart.dart';
 import 'package:parkol/home.dart';
 import 'package:parkol/kapasitas.dart';
 import 'package:parkol/map.dart';
@@ -39,7 +40,7 @@ class _HomeContentState extends State<HomeContent> {
           Home(),
           Kapasitas(),
           menu(),
-          LineChartSample7(),
+          chart3(),
         ],
       ),
       selectedIndex: _selectedIndex,
