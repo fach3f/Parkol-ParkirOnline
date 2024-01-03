@@ -26,7 +26,7 @@ class menu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => pelanggan()),
+                MaterialPageRoute(builder: (context) => Pelanggan()),
               );
             },
             child: ListWidget(gambar: "assets/slot.png", judul: "Pengunjung"),
