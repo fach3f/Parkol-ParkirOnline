@@ -1,243 +1,80 @@
-import 'presentation/app_resources.dart';
-import 'util/color_extensions.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
+class chart extends StatefulWidget {
+  const chart({super.key});
 
-class chart3 extends StatelessWidget {
-  const chart3();
+  @override
+  State<chart> createState() => _chartState();
+}
+
+class _chartState extends State<chart> {
+  final List<ChartData> chartData = [
+    ChartData("Indonesia", 100, 222, 65, 354),
+    ChartData("Myanmar", 400, 763, 212, 190),
+    ChartData("China", 564, 234, 529, 238),
+    ChartData("Kanada", 233, 168, 40, 145),
+    ChartData("Amerika", 199, 299, 99, 9),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SParX',
-          style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text(
+          'SParX',
+          style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),
+        ),
         centerTitle: true,
-        backgroundColor: const Color(0xff051A16), // Ganti warna AppBar sesuai keinginan
+        backgroundColor: const Color(0xff051A16),
+        // Ganti dengan warna yang diinginkan
       ),
-      backgroundColor: const Color(0xff0C2F23), // Ganti warna latar belakang sesuai keinginan
-      body: Stack(
-        children: [
-      Positioned.fill(
-      child: BarChart(
-      BarChartData(
-          barTouchData: barTouchData,
-          titlesData: titlesData,
-          borderData: borderData,
-          barGroups: barGroups,
-          gridData: const FlGridData(show: false),
-          alignment: BarChartAlignment.spaceAround,
-          maxY: 20,
+      body: Center(
+        child: Container(
+          child: SfCartesianChart(
+            primaryXAxis: CategoryAxis(),
+            series: <ChartSeries>[
+              StackedColumnSeries<ChartData, String>(
+                dataSource: chartData,
+                xValueMapper: (ChartData ch, _) => ch.x,
+                yValueMapper: (ChartData ch, _) => ch.y1,
+              ),
+              StackedColumnSeries<ChartData, String>(
+                dataSource: chartData,
+                xValueMapper: (ChartData ch, _) => ch.x,
+                yValueMapper: (ChartData ch, _) => ch.y2,
+              ),
+              StackedColumnSeries<ChartData, String>(
+                dataSource: chartData,
+                xValueMapper: (ChartData ch, _) => ch.x,
+                yValueMapper: (ChartData ch, _) => ch.y3,
+              ),
+              StackedColumnSeries<ChartData, String>(
+                dataSource: chartData,
+                xValueMapper: (ChartData ch, _) => ch.x,
+                yValueMapper: (ChartData ch, _) => ch.y4,
+              ),
+            ],
+          ),
         ),
       ),
-    ),
-          Positioned(
-            top: 20.0,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Text(
-                "Data Pengunjung",
-                style: GoogleFonts.goldman(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.contentColorsmoGreen,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
-
-
-  BarTouchData get barTouchData => BarTouchData(
-    enabled: false,
-    touchTooltipData: BarTouchTooltipData(
-      tooltipBgColor: Colors.transparent,
-      tooltipPadding: EdgeInsets.zero,
-      tooltipMargin: 8,
-      getTooltipItem: (
-          BarChartGroupData group,
-          int groupIndex,
-          BarChartRodData rod,
-          int rodIndex,
-          ) {
-        return BarTooltipItem(
-          rod.toY.round().toString(),
-          const TextStyle(
-            color: AppColors.contentColorWhite,
-            fontWeight: FontWeight.bold,
-          ),
-        );
-      },
-    ),
-  );
-
-  Widget getTitles(double value, TitleMeta meta) {
-    final style = TextStyle(
-      color: AppColors.contentColorsmoGreen.darken(20),
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
-    );
-    String text;
-    switch (value.toInt()) {
-      case 0:
-        text = 'Senin';
-        break;
-      case 1:
-        text = 'Selasa';
-        break;
-      case 2:
-        text = 'Rabu';
-        break;
-      case 3:
-        text = 'Kamis';
-        break;
-      case 4:
-        text = 'Jumat';
-        break;
-      case 5:
-        text = 'Sabtu';
-        break;
-      case 6:
-        text = 'Minggu';
-        break;
-      default:
-        text = '';
-        break;
-    }
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 4,
-      child: Text(text, style: style),
-    );
-  }
-
-  FlTitlesData get titlesData => FlTitlesData(
-    show: true,
-    bottomTitles: AxisTitles(
-      sideTitles: SideTitles(
-        showTitles: true,
-        reservedSize: 30,
-        getTitlesWidget: getTitles,
-      ),
-    ),
-    leftTitles: const AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    topTitles: const AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    rightTitles: const AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-  );
-
-  FlBorderData get borderData => FlBorderData(
-    show: false,
-  );
-
-  LinearGradient get _barsGradient => LinearGradient(
-    colors: [
-      AppColors.contentColorsmoGreen.darken(10),
-      AppColors.contentColorWhite,
-    ],
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-  );
-
-  List<BarChartGroupData> get barGroups => [
-    BarChartGroupData(
-      x: 0,
-      barRods: [
-        BarChartRodData(
-          toY: 8,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 1,
-      barRods: [
-        BarChartRodData(
-          toY: 10,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 2,
-      barRods: [
-        BarChartRodData(
-          toY: 14,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 3,
-      barRods: [
-        BarChartRodData(
-          toY: 15,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 4,
-      barRods: [
-        BarChartRodData(
-          toY: 13,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 5,
-      barRods: [
-        BarChartRodData(
-          toY: 10,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 6,
-      barRods: [
-        BarChartRodData(
-          toY: 16,
-          gradient: _barsGradient,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-  ];
 }
 
-class BarChartSample3 extends StatefulWidget {
-  const BarChartSample3({super.key});
+class ChartData {
+  final String x;
+  final int y1;
+  final int y2;
+  final int y3;
+  final int y4;
 
-  @override
-  State<StatefulWidget> createState() => BarChartSample3State();
-}
-
-class BarChartSample3State extends State<BarChartSample3> {
-  @override
-  Widget build(BuildContext context) {
-    return const AspectRatio(
-      aspectRatio: 1.6,
-      child: chart3(),
-    );
-  }
+  ChartData(this.x, this.y1, this.y2, this.y3, this.y4);
 }

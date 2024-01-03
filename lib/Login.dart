@@ -86,9 +86,9 @@ Future<void> login() async {
         children: [
           Container(
             child: Padding(
-              padding:  const EdgeInsets.only(left: 80.10,top: 90),
+              padding:  const EdgeInsets.only(left: 105.10,top: 90),
               child: Text(
-                'PARKOL',
+                'SParX',
                 style: GoogleFonts.goldman(
                   fontSize: 50,
                   color: Colors.white,
@@ -101,7 +101,7 @@ Future<void> login() async {
             child: Padding(
               padding:  const EdgeInsets.only(left: 120.10,top: 150),
               child: Text(
-                'Parkir Online',
+                'Smart Parkir',
                 style: GoogleFonts.goldman(
                   fontSize: 20,
                   color: Colors.white,
@@ -160,7 +160,7 @@ Future<void> login() async {
                       ),
                     ),
                     const SizedBox(
-                      height: 35,
+                      height: 10,
                     ),
                     Card(
                       child: TextField(
@@ -180,7 +180,7 @@ Future<void> login() async {
                       ),
                     ),
                     const SizedBox(
-                      height: 25,
+                      height: 10,
                     ),
                     const Align(
                       alignment: Alignment.centerRight,
@@ -194,7 +194,7 @@ Future<void> login() async {
                       ),
                     ),
                     const SizedBox(
-                      height: 90,
+                      height: 68,
                     ),
                     Container(
                       height: 50,
