@@ -11,37 +11,45 @@ class pelanggan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff0C2F23),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text('SParX',
+          style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),),
+        centerTitle: true,
+        backgroundColor: const Color(0xff051A16),// Ganti dengan warna yang diinginkan
+      ),
       body: ListView(
         children: <Widget>[
           InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Lantai2()),
-              );
-            },
-            child: ListWidget(gambar: "assets/slot.png", judul: "1 Hari Kemarin"),
+            child: ListWidget(
+              gambar: "assets/slot.png",
+              judul: "1 Hari Lalu",
+              jam: "Jam : ",
+              rata:"Rata-Rata Pengunjung : " ,
+            ),
           ),
           Divider(color: Colors.white, height: 10.0),
           InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Lantai1()),
-              );
-            },
-            child: ListWidget(gambar: "assets/maps.png", judul: "Denah Parkir"),
+            child: ListWidget(
+              gambar: "assets/maps.png",
+              judul: "2 Hari Lalu",
+              jam: "Jam : ",
+              rata:"Rata-Rata Pengunjung : " ,
+            ),
           ),
           Divider(color: Colors.white, height: 5.0),
           InkWell(
-            onTap: () {
-              // Handle tap for "Pendapatan"
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Pendapatan()),
-              );
-            },
-            child: ListWidget(gambar: "assets/kasir.png", judul: "Pendapatan"),
+            child: ListWidget(
+              gambar: "assets/kasir.png",
+              judul: "3 Hari Lalu",
+              jam: "Jam : ",
+              rata:"Rata-Rata Pengunjung : " ,
+            ),
           ),
         ],
       ),
@@ -49,27 +57,51 @@ class pelanggan extends StatelessWidget {
   }
 }
 
+
+
 class ListWidget extends StatelessWidget {
-  ListWidget({required this.gambar, required this.judul});
+  ListWidget({
+    required this.gambar,
+    required this.judul,
+    required this.jam,
+    required this.rata,
+  });
 
   final String gambar;
   final String judul;
+  final String jam;
+
+  final String rata;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xff0C2F23),
-      padding: EdgeInsets.all(30.0),
+      padding: EdgeInsets.all(40.0),
       child: Center(
-        child: Row(
+        child: Column(
           children: <Widget>[
-            Image.asset(
-              gambar,
-              width: 100.0,
+            Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: Image.asset(
+                gambar,
+                width: 90.0,
+              ),
             ),
+            SizedBox(height: 10.0),  // Menambahkan jarak vertical sebesar 10.0
             Text(
               judul,
               style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),
+            ),
+            SizedBox(height: 10.0),  // Menambahkan jarak vertical sebesar 10.0
+            Text(
+              jam,
+              style: TextStyle(color: Colors.white),
+            ),
+            SizedBox(height: 10.0),  // Menambahkan jarak vertical sebesar 10.0
+            Text(
+              rata,
+              style: TextStyle(color: Colors.white),
             ),
           ],
         ),
@@ -77,5 +109,4 @@ class ListWidget extends StatelessWidget {
     );
   }
 }
-
 
