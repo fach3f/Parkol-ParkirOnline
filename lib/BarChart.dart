@@ -40,7 +40,7 @@ class chart3 extends StatelessWidget {
             right: 0,
             child: Center(
               child: Text(
-                "Data Pendapatan",
+                "Data Pengunjung",
                 style: GoogleFonts.goldman(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
