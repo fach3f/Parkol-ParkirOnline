@@ -10,7 +10,7 @@ class pelanggan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff0C2F23),
+      backgroundColor: const Color(0xff295341),
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -27,25 +27,25 @@ class pelanggan extends StatelessWidget {
         children: <Widget>[
           InkWell(
             child: ListWidget(
-              gambar: "assets/slot.png",
+              gambar: "assets/jam.png",
               judul: "1 Hari Lalu",
               jam: "Jam : ",
               rata:"Rata-Rata Pengunjung : " ,
             ),
           ),
-          Divider(color: Colors.white, height: 10.0),
+          Divider(color: const Color(0xff295341), height: 10.0),
           InkWell(
             child: ListWidget(
-              gambar: "assets/maps.png",
+              gambar: "assets/seru.png",
               judul: "2 Hari Lalu",
               jam: "Jam : ",
               rata:"Rata-Rata Pengunjung : " ,
             ),
           ),
-          Divider(color: Colors.white, height: 5.0),
+          Divider(color:const Color(0xff295341), height: 10.0),
           InkWell(
             child: ListWidget(
-              gambar: "assets/kasir.png",
+              gambar: "assets/stop.png",
               judul: "3 Hari Lalu",
               jam: "Jam : ",
               rata:"Rata-Rata Pengunjung : " ,
