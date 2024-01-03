@@ -53,13 +53,24 @@ class _mapState extends State<Pendapatan> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff0C2F23),
-      
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text('SParX',
+          style: GoogleFonts.goldman(fontSize: 25.0, color: Colors.grey),),
+        centerTitle: true,
+        backgroundColor: const Color(0xff051A16),// Ganti dengan warna yang diinginkan
+      ),
       body: Center(
         child: Stack(
           alignment: Alignment.center,
           children: [
             Positioned(
-              top: 200.0,
+              top: 150.0,
               child: Container(
                 width: 350.0,
                 height: 200.0,
@@ -103,7 +114,7 @@ class _mapState extends State<Pendapatan> {
               ),
             ),
             Positioned(
-              top: 100.0,
+              top: 50.0,
               child: Text(
                 "Data Pendapatan",
                 style: GoogleFonts.goldman(
@@ -114,7 +125,7 @@ class _mapState extends State<Pendapatan> {
               ),
             ),
             Positioned(
-              top: 440.0,
+              top: 400.0,
               child: Container(
                 width: 350.0,
                 height: 200.0,
