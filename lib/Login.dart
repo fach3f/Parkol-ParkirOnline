@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parkol/reusable_widget/reusable_widget.dart';
 import 'package:parkol/signup.dart';
 import 'package:parkol/landing.dart';
-import 'package:parkol/services/api_services.dart'; // Import your API service
+import 'package:parkol/services/api_services.dart';
+import 'package:parkol/utils/color_utils.dart'; // Import your API service
 
 
 class Login extends StatefulWidget {
@@ -81,178 +83,83 @@ Future<void> login() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff0C2F23),
-      body: Stack(
-        children: [
-          Container(
-            child: Padding(
-              padding:  const EdgeInsets.only(left: 105.10,top: 90),
-              child: Text(
-                'SParX',
-                style: GoogleFonts.goldman(
-                  fontSize: 50,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            hexStringToColor("051A16"),
+            hexStringToColor("0C2F23"),
+            hexStringToColor("295341")
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter
+          )
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+              20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+              child: Column(
+                children: <Widget>[
+                logoWidget("assets/logo2.png"),
+                SizedBox(
+                  height: 30,
                 ),
-              ),
-            ),
-          ),
-          Container(
-            child: Padding(
-              padding:  const EdgeInsets.only(left: 120.10,top: 150),
-              child: Text(
-                'Smart Parkir',
-                style: GoogleFonts.goldman(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                reusableTextField("Enter Username", 
+                Icons.person_2_outlined, 
+                false, 
+                usernameController),
+                  SizedBox(
+                  height: 20, 
                 ),
-              ),
-            ),
-          ),
-          Container(
-            child: Padding(
-              padding:  const EdgeInsets.only(left: 150.10,top: 180),
-              child: Row(
-                children: [
-                  Text(
-                    'Silahkan Login',
-                    style: GoogleFonts.goldman(
-                      fontSize: 10,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  Icon(
-                    Icons.info_outline,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 200.0),
-            child: Container(
-              height: double.infinity,
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 18.0, right: 18),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Card(
-                      child: TextField(
-                        controller: usernameController,
-                        decoration: InputDecoration(
-                          prefix: Text('     ', style: GoogleFonts.goldman()),  // Add some space before the label text
-                          suffixIcon: Icon(
-                            Icons.check,
-                            color: Colors.grey,
-                          ),
-                          labelText: '    username',
-                          labelStyle: GoogleFonts.goldman().copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(184, 0, 0, 0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Card(
-                      child: TextField(
-                        controller: passwordController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          prefix: Text('     ', style: GoogleFonts.goldman()), // Add some space before the label text
-                          suffixIcon: Icon(
-                            Icons.remove_red_eye_outlined,
-                            color: Colors.grey,
-                          ),
-                          labelText: '    Password',
-                          labelStyle: GoogleFonts.goldman().copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(184, 0, 0, 0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          color: Color(0xFF7B61FF),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 68,
-                    ),
-                    Container(
-                      height: 50,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(45),
-                        color: const Color.fromARGB(255, 110, 109, 109)
-                      ),
-                      child: TextButton(
-                        onPressed: login,
-                        child: const Text(
-                          'SIGN IN',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have an account?",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
-                            },
-                            child: Text(
-                              "Create New Account",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                                color: Color(0xFF7B61FF),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                reusableTextField("Enter Password", 
+                Icons.lock, 
+                true, 
+                passwordController),
+                SizedBox(
+                  height: 20, 
                 ),
+                signInSignUpbutton(context, true, (){
+                  login();
+                }),
+                signUpOption(context)
+              ],
               ),
-            ),
           ),
-        ],
+        ),
       ),
     );
   }
+
+
+Row signUpOption(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Text(
+        "Don't have an account?",
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Signup()),
+          );
+        },
+        child: Text.rich(
+          TextSpan(
+            text: "Sign Up",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
 }
