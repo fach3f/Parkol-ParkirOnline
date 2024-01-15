@@ -165,6 +165,7 @@ Future<void> login() async {
                     Card(
                       child: TextField(
                         controller: passwordController,
+                        obscureText: true,
                         decoration: InputDecoration(
                           prefix: Text('     ', style: GoogleFonts.goldman()), // Add some space before the label text
                           suffixIcon: Icon(

@@ -13,16 +13,17 @@ class Kapasitas extends StatefulWidget {
 }
 
 class _KapasitasState extends State<Kapasitas> {
+  late Future<void> _cupcupkapasitas;
   String totalKendaraanLantai1 = '0'; // Provide an initial value
   String totalKendaraanLantai2 = '0'; // Provide an initial value
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    _fetchDataTerus();
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchDataKapasitas() async {
     try {
       // Make API calls to get data for lantai 1 and lantai 2
       final responseLantai1 = await http.get(Uri.parse('https://backendparkol-m77laoox7a-uc.a.run.app/total-kendaraan-lantai-1'));
@@ -44,6 +45,16 @@ class _KapasitasState extends State<Kapasitas> {
     }
   }
 
+  void _fetchDataTerus() {
+    fetchDataKapasitas(); 
+
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        fetchDataKapasitas();
+      });
+      _fetchDataTerus(); 
+    });
+  }
 
 
   @override
