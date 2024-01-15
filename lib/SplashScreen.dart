@@ -45,7 +45,7 @@ class _SplashScreen extends State<SplashScreen> {
               child: FittedBox(
                 fit: BoxFit.contain,
                 child: Image.asset(
-                  'assets/logo.png', // Replace 'your_image.png' with your actual image asset path
+                  'assets/logo2.png', // Replace 'your_image.png' with your actual image asset path
                 ),
               ),
             ),

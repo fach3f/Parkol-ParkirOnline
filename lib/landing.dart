@@ -5,9 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:parkol/BarChart.dart';
 import 'package:parkol/home.dart';
 import 'package:parkol/kapasitas.dart';
-import 'package:parkol/map.dart';
-import 'package:parkol/Chart.dart';
-import 'package:parkol/BarChart.dart';
+
 class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
