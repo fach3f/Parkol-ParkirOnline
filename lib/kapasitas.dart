@@ -171,7 +171,7 @@ class _KapasitasState extends State<Kapasitas> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 33),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
